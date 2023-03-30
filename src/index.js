@@ -158,7 +158,7 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 //   function clearMarkup() {
 //     gallery.innerHTML = '';
 //   }
-  =========================
+  // =========================
 
 const refs = {
     mainForm: document.querySelector('#search-form'),
