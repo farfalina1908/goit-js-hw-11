@@ -173,6 +173,7 @@ const PER_PAGE = 40;
 let page = 1;
 
 // Функция для кнопки "Показать еще". При странице "1" прячет кнопку.
+const gallery = new SimpleLightbox('.gallery a');
 function mainPage() {
   if (page === 1) {
     refs.continueButton.classList.add('is-hidden');
@@ -281,39 +282,37 @@ function renderGallery(pictureArray) {
         likes,
         views,
         comments,
-        downloads,
+        downloads,        
       }) => {
         return `
-          <div class="photo-card">
-          <a class="gallery__item" href="${largeImageURL}">
-    <img src="${webformatURL}" alt="${tags}" loading="lazy" class="gallery__image"/>  
-    <div class="info">
-      <p class="info-item">
-        <b>Likes : ${likes}</b>
-      </p>
-      <p class="info-item">
-        <b>Views: ${views}</b>
-      </p>
-      <p class="info-item">
-        <b>Comments: ${comments}</b>
-      </p>
-      <p class="info-item">
-        <b>Downloads: ${downloads}</b>
-      </p>
-    </div>
-  </div> </a>
-  `;
-      }
-    )
+        <div class="photo-card">
+                <a class="gallery-item" href="${largeImageURL}">
+           <img src="${webformatURL}" alt="${tags}" loading="lazy" class="photo-card__image"/>  
+           <div class="info">
+             <p class="info-item">
+               <b>Likes : ${likes}</b>
+             </p>
+            <p class="info-item">
+               <b>Views: ${views}</b>
+           </p>
+            <p class="info-item">
+              <b>Comments: ${comments}</b>
+             </p>
+             <p class="info-item">
+               <b>Downloads: ${downloads}</b>
+             </p>
+          </div>
+          </a>
+          </div>
+         `;
+             }
+           )
     .join('');
   refs.gallery.insertAdjacentHTML('beforeend', imgMarkup);
 }
 
-const lightbox = new SimpleLightbox('.gallery a', {
-  captionsData: "alt",
-  captionPosition: "bottom",
-  captionDelay: 250,
-});
+
+gallery.refresh();
 // Очистка галереи
 function clearMarkup() {
   refs.gallery.innerHTML = '';
