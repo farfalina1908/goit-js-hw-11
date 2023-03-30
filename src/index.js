@@ -285,8 +285,8 @@ function renderGallery(pictureArray) {
       }) => {
         return `
           <div class="photo-card">
-          <a class="gallery-item" href="${largeImageURL}">
-    <img src="${webformatURL}" alt="${tags}" loading="lazy" class="photo-card__image"/>  
+          <a class="gallery__item" href="${largeImageURL}">
+    <img src="${webformatURL}" alt="${tags}" loading="lazy" class="gallery__image"/>  
     <div class="info">
       <p class="info-item">
         <b>Likes : ${likes}</b>
